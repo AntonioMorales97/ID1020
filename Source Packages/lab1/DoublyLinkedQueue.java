@@ -3,29 +3,25 @@ package lab1;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 public class DoublyLinkedQueue<Item> implements Iterable<Item>{
     private Node first;
     private Node last;
     private int size;
     
     public void main (String[] args) {
-        int i = 0;
         DoublyLinkedQueue<Character> queue = new DoublyLinkedQueue<Character>();
-        queue.enqueue('A');
-        queue.enqueue('B');
-        queue.enqueue('C');
-        queue.enqueue('D');
-        queue.enqueue('E');
-        queue.enqueue('F');
-        queue.enqueue('G');
-        queue.enqueue('H');
-        queue.enqueue('I');
-        queue.enqueue('J');
-        queue.enqueue('K');
-        queue.enqueue('L');
+        char ch;
+        StdOut.print("Enter some characters:\n");
+        while((ch = (char) StdIn.readChar()) != '\n')
+            queue.enqueue(ch);
         
-        for (char ch : queue)
-            System.out.print(queue.dequeue());
+        queue.iterateFromBehind();
+        StdOut.print("Now iterating with iterator (FIFO) with dequeue...:\n");
+        for (char c : queue)
+            StdOut.print(queue.dequeue());
     }
     
     public DoublyLinkedQueue() {
@@ -71,10 +67,19 @@ public class DoublyLinkedQueue<Item> implements Iterable<Item>{
         if(first != null)
             first.prev = null;
         size--;
-        return item;
-        
+        return item;  
     }
 
+    public void iterateFromBehind() {
+        StdOut.print("Iterating from behind without removing anything...:");
+        Node currentLastNode = last;
+        while(currentLastNode != null) {
+            StdOut.print(currentLastNode.item);
+            currentLastNode = currentLastNode.prev;
+        }
+        StdOut.print('\n');    
+    }
+    
     @Override
     public Iterator<Item> iterator() {
         return new QueueIterator();
@@ -82,7 +87,6 @@ public class DoublyLinkedQueue<Item> implements Iterable<Item>{
     
     private class QueueIterator implements Iterator<Item>{
         private Node currentFirst = first; //FIFO
-        private Node currentLast = last; //LIFO
 
         @Override
         public boolean hasNext() {
@@ -94,10 +98,7 @@ public class DoublyLinkedQueue<Item> implements Iterable<Item>{
             Item item = currentFirst.item;
             currentFirst = first.next;
             return item;
-        }
-        
-        
-        
+        }  
     }
 
 }
