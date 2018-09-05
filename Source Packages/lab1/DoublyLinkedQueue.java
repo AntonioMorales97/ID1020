@@ -15,13 +15,14 @@ public class DoublyLinkedQueue<Item> implements Iterable<Item>{
         DoublyLinkedQueue<Character> queue = new DoublyLinkedQueue<Character>();
         char ch;
         StdOut.print("Enter some characters:\n");
-        while((ch = (char) StdIn.readChar()) != '\n')
+        while((ch = (char) StdIn.readChar()) != '\n' && ch != '\r')
             queue.enqueue(ch);
-        
+
         queue.iterateFromBehind();
         StdOut.print("Now iterating with iterator (FIFO) with dequeue...:\n");
         for (char c : queue)
             StdOut.print(queue.dequeue());
+        StdOut.print('\n');
     }
     
     public DoublyLinkedQueue() {
@@ -71,7 +72,7 @@ public class DoublyLinkedQueue<Item> implements Iterable<Item>{
     }
 
     public void iterateFromBehind() {
-        StdOut.print("Iterating from behind without removing anything...:");
+        StdOut.print("Iterating from behind without removing anything...:\n");
         Node currentLastNode = last;
         while(currentLastNode != null) {
             StdOut.print(currentLastNode.item);
