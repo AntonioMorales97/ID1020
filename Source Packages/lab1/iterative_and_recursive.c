@@ -15,19 +15,30 @@
 *   to the output stream in a reverse order.
 */
 #include <stdio.h>
+#include <stdlib.h>
 
 void iterative_reverse(void)
 {
+    int size = 10;
     int i = 0;
     int j;
     char c;
-    char str[100];
+    char *str = malloc(10*sizeof(char));
 
     while((c = getchar()) != '\n')
+    {
         str[i++] = c;
+        if(i >= size)
+        {
+            str = (char *) realloc(str, size*2);
+            size = (size*2);
+        }
+    }
 
     for (j = i - 1; j >= 0; j--)
         putchar(str[j]);
+
+    free (str);
 }
 
 void recursive_reverse(void)
@@ -42,10 +53,10 @@ void recursive_reverse(void)
 
 int main(void)
 {
-    printf("Enter something to stdin (iterative reversed): \n");
-    iterative_reverse();
-    putchar('\n');
     printf("Enter something to stdin (recursive reversed): \n");
     recursive_reverse();
+    putchar('\n');
+    printf("Enter something to stdin (iterative reversed): \n");
+    iterative_reverse();
     putchar('\n');
 }
