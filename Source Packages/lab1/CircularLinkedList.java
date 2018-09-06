@@ -141,21 +141,24 @@ public class CircularLinkedList<Item> implements Iterable<Item> {
             StdOut.print(c);
         StdOut.println();
         
-        StdOut.println("Adding 'Z' to the front of the list...");
-        list.addToFront('Z');
-        StdOut.println("Circular linked list: " + list);
-        
-        StdOut.println("Removing last element in the circular linked list...");
-        list.removeBack();
-        StdOut.println("Circular linked list: " + list);
-        StdOut.println("Removing the first element in the circular linked list...");
+        StdOut.println("Enter one character that will be added to the front of the list: ");
+        ch = StdIn.readChar();
+        if (ch == '\n' || ch == '\r') // if remaining in StdIn...
+            ch = StdIn.readChar();
+        list.addToFront(ch);
+        StdOut.println("List is now: " + list);
+        StdOut.println("Removing the first element...");
         list.removeFront();
-        StdOut.println("Circular linked list: " + list);
-        
+        StdOut.println("List is now: " + list);
+        StdOut.println("Removing the last element...");
+        list.removeBack();
+        StdOut.println("List is now: " + list);
+                
         StdOut.println("Removing the remaining elements in the list. Starting from the beginning: ");
         for (char c : list)
             StdOut.print(list.removeFront());
         StdOut.println();
-        StdOut.println("Circular linked list: " + list);
+        StdOut.println("Empty list: " + list);
+        
     }
 }

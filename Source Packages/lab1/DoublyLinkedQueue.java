@@ -107,24 +107,29 @@ public class DoublyLinkedQueue<Item> implements Iterable<Item> {
 
         @Override
         public void add(Item e) {
+            StdOut.println("Not implemented for this task...");
         }
         
         @Override
         public int nextIndex() {
+            StdOut.println("Not implemented for this task...");
             return 0;
         }
 
         @Override
         public int previousIndex() {
+            StdOut.println("Not implemented for this task...");
             return 0;
         }
 
         @Override
         public void remove() {
+            StdOut.println("Not implemented for this task...");
         }
 
         @Override
         public void set(Item e) {
+            StdOut.println("Not implemented for this task...");
         }
     }
 
