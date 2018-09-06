@@ -11,26 +11,6 @@ public class CircularLinkedList<Item> implements Iterable<Item> {
     public Node last;
     private int size;
 
-    public void main(String[] args) {
-        CircularLinkedList<Character> list = new CircularLinkedList<Character>();
-        char ch;
-        StdOut.print("Enter some characters:\n");
-        while((ch = (char) StdIn.readChar()) != '\n' && ch != '\r') {
-            list.addToBack(ch);
-        }
-        
-        for (char c : list)
-            System.out.print(c);
-        /*
-        System.out.println(list);
-        System.out.println("First: " + list.first.item + " Last: " + list.last.item);
-        System.out.println(list.removeFront());
-        //System.out.println("First: " + list.first.item + " Last: " + list.last.item);
-        
-        System.out.println(list);
-        */
-    }
-
     public CircularLinkedList() {
         this.size = 0;
     }
@@ -121,8 +101,6 @@ public class CircularLinkedList<Item> implements Iterable<Item> {
         s.append("["+currentNode.item+"]" +"]");
         return s.toString();
     }
-    
-    
 
     @Override
     public Iterator<Item> iterator() {
@@ -134,7 +112,9 @@ public class CircularLinkedList<Item> implements Iterable<Item> {
         private Node current = first;
 
         @Override
-        public boolean hasNext() {        
+        public boolean hasNext() {  
+            if(size == 0)
+                return false;
             return current != first || !completeCircle;
         }
 
@@ -148,4 +128,34 @@ public class CircularLinkedList<Item> implements Iterable<Item> {
         }
     }
 
+    public static void main(String[] args) {
+        CircularLinkedList<Character> list = new CircularLinkedList<Character>();
+        char ch;
+        StdOut.println("Enter some characters where each will be added to the back of the linked list:");
+        while((ch = (char) StdIn.readChar()) != '\n' && ch != '\r')
+            list.addToBack(ch);
+        
+        StdOut.println("Circular linked list: " + list);
+        StdOut.println("Iterating the list using foreach: ");
+        for (char c : list)
+            StdOut.print(c);
+        StdOut.println();
+        
+        StdOut.println("Adding 'Z' to the front of the list...");
+        list.addToFront('Z');
+        StdOut.println("Circular linked list: " + list);
+        
+        StdOut.println("Removing last element in the circular linked list...");
+        list.removeBack();
+        StdOut.println("Circular linked list: " + list);
+        StdOut.println("Removing the first element in the circular linked list...");
+        list.removeFront();
+        StdOut.println("Circular linked list: " + list);
+        
+        StdOut.println("Removing the remaining elements in the list. Starting from the beginning: ");
+        for (char c : list)
+            StdOut.print(list.removeFront());
+        StdOut.println();
+        StdOut.println("Circular linked list: " + list);
+    }
 }

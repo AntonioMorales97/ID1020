@@ -26,7 +26,7 @@ public class StringStack {
         while(!localStack.isEmpty())
             StdOut.print(localStack.pop());
         
-        StdOut.print('\n');
+        StdOut.println();
     }
     
     public static void recursiveStack() {
