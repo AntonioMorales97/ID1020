@@ -215,9 +215,9 @@ public class DoublyLinkedQueue<Item> implements Iterable<Item> {
      * A test client where it reads some characters from the user and enqueues them.
      * Then it iterates reversed in queue using the iterator of the queue. Then
      * iterating through the queue using java's foreach. Then is dequeues one
-     * olement from the queue (FIFO) and ends with dequeing the rest of the queue.
+     * element from the queue (FIFO) and ends with dequeuing the rest of the queue.
      * Remember it will throw exception if no characters are given in from the user
-     * because the queue will then be empty.
+     * because the queue will then be empty and nothing to dequeue.
      * 
      * @param args
      *            Input from terminal, not used.
@@ -253,5 +253,4 @@ public class DoublyLinkedQueue<Item> implements Iterable<Item> {
 
         StdOut.println("Linked queue: " + queue);
     }
-
 }
