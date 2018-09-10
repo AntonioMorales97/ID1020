@@ -54,8 +54,6 @@ void recursive_reverse(void)
     char c;
     if((c = getchar()) != '\n')
         recursive_reverse();
-    else
-        return; //avoid printing out the '\n' in the end.
     putchar(c);
 }
 
