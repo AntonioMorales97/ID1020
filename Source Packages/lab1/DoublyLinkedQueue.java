@@ -220,7 +220,7 @@ public class DoublyLinkedQueue<Item> implements Iterable<Item> {
      * because the queue will then be empty and nothing to dequeue.
      * 
      * @param args
-     *            Input from terminal, not used.
+     *            Input from command line, not used here.
      */
     public static void main(String[] args) {
         DoublyLinkedQueue<Character> queue = new DoublyLinkedQueue<Character>();

@@ -59,7 +59,7 @@ public class BracketCounter {
      * balanced or not.
      * 
      * @param args
-     *            Input from terminal.
+     *            Input from command line, not used here.
      */
     public static void main(String[] args) {
         BracketCounter counter = new BracketCounter();

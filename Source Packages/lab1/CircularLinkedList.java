@@ -223,7 +223,7 @@ public class CircularLinkedList<Item> implements Iterable<Item> {
      * list. Starting from the beginning.
      * 
      * @param args
-     *            Input from terminal, not used here.
+     *            Input from command line, not used here.
      */
     public static void main(String[] args) {
         CircularLinkedList<Character> list = new CircularLinkedList<Character>();

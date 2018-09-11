@@ -141,7 +141,7 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
      * (hardcoded) and finally it iterates through the queue using java's foreach.
      * 
      * @param args
-     *            Input from terminal, not used.
+     *            Input from command line, not used here.
      */
     public static void main(String[] args) {
         GeneralizedQueueArray<Character> queue = new GeneralizedQueueArray<Character>();

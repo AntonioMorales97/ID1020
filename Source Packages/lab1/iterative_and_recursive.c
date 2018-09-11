@@ -57,7 +57,7 @@ void recursive_reverse(void)
     putchar(c);
 }
 
-int main(void)
+int main(int argc, const char* argv[])
 {
     printf("Enter something to stdin (recursive reversed): \n");
     recursive_reverse();
@@ -65,4 +65,5 @@ int main(void)
     printf("Enter something to stdin (iterative reversed): \n");
     iterative_reverse();
     putchar('\n');
+    return 0;
 }
