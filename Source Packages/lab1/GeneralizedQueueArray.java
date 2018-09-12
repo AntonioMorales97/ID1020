@@ -16,7 +16,7 @@ import edu.princeton.cs.algs4.StdOut;
  *            generic type.
  */
 public class GeneralizedQueueArray<Item> implements Iterable<Item> {
-    private Item[] elements = (Item[]) new Object[1];
+    private Item[] items = (Item[]) new Object[1];
     private int size;
 
     /**
@@ -28,10 +28,10 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
     }
 
     private void resize(int newSize) {
-        Item[] temp = (Item[]) new Object[newSize];
+        Item[] newArray = (Item[]) new Object[newSize];
         for (int i = 0; i < size; i++)
-            temp[i] = elements[i];
-        elements = temp;
+            newArray[i] = items[i];
+        items = newArray;
     }
 
     /**
@@ -42,9 +42,9 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
      *            Item to be inserted to the queue.
      */
     public void insert(Item item) {
-        if (size == elements.length)
+        if (size == items.length)
             resize(size * 2);
-        elements[size++] = item;
+        items[size++] = item;
     }
 
     /**
@@ -64,14 +64,14 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
     public Item delete(int k) {
         if (k > size || k == 0)
             throw new IndexOutOfBoundsException();
-        Item item = elements[size - k];
-        elements[size - k] = null;
+        Item item = items[size - k];
+        items[size - k] = null;
         for (int i = size - k; i < size - 1; i++)
-            elements[i] = elements[i + 1];
+            items[i] = items[i + 1];
         size--;
 
-        if (size > 0 && size == elements.length / 4)
-            resize(elements.length / 2);
+        if (size > 0 && size == items.length / 4)
+            resize(items.length / 2);
 
         return item;
     }
@@ -93,8 +93,8 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
             return s.append("]").toString();
         int i = 0;
         while (i < size - 1)
-            s.append("[" + elements[i++] + "],");
-        s.append("[" + elements[i] + "]]");
+            s.append("[" + items[i++] + "],");
+        s.append("[" + items[i] + "]]");
         return s.toString();
     }
 
@@ -128,7 +128,7 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
          */
         @Override
         public Item next() {
-            return elements[index++];
+            return items[index++];
         }
 
     }
@@ -153,10 +153,10 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
         StdOut.println("The generalized queue: " + queue);
         StdOut.println("Enter which element to remove (most recently added has index 1): ");
         int index = StdIn.readInt();
-        queue.delete(index);
+        StdOut.println("Removed: " + queue.delete(index));
         StdOut.println("The queue is now: " + queue);
         StdOut.println("Removing the last element (if empty expect IndexOutOf...Exception)...");
-        queue.delete(1);
+        StdOut.println("Removed: " + queue.delete(1));
         StdOut.println("The queue is now: " + queue);
         StdOut.println("Iterating with foreach:");
         for (char c : queue)
