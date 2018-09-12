@@ -12,8 +12,7 @@ import edu.princeton.cs.algs4.StdOut;
  * 
  * @author Antonio
  *
- * @param <Item>
- *            generic type.
+ * @param <Item> generic type.
  */
 public class GeneralizedQueueArray<Item> implements Iterable<Item> {
     private Item[] items = (Item[]) new Object[1];
@@ -38,8 +37,7 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
      * Checks if the queue is full and if so resizes it to the double size and
      * inserts the item to the end of the queue (not the end of the list!)
      * 
-     * @param item
-     *            Item to be inserted to the queue.
+     * @param item Item to be inserted to the queue.
      */
     public void insert(Item item) {
         if (size == items.length)
@@ -54,11 +52,10 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
      * the size. At the end it checks if the length of the queue array is
      * unnecessary big and halves it if possible.
      * 
-     * @param k
-     *            the position of the item to be deleted, where the recently added
-     *            has index 1.
-     * @throws IndexOutOfBoundsException
-     *             if the index position is out of the queue array.
+     * @param k the position of the item to be deleted, where the recently added has
+     *          index 1.
+     * @throws IndexOutOfBoundsException if the index position is out of the queue
+     *                                   array.
      * @return the item in the deleted position.
      */
     public Item delete(int k) {
@@ -140,8 +137,7 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
      * the last recently added has index 1. Then the last item is removed
      * (hardcoded) and finally it iterates through the queue using java's foreach.
      * 
-     * @param args
-     *            Input from command line, not used here.
+     * @param args Input from command line, not used here.
      */
     public static void main(String[] args) {
         GeneralizedQueueArray<Character> queue = new GeneralizedQueueArray<Character>();
