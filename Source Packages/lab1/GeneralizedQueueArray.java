@@ -74,6 +74,20 @@ public class GeneralizedQueueArray<Item> implements Iterable<Item> {
     }
 
     /**
+     * Access to item in the given position in the array.
+     * 
+     * @param pos position of the item to get.
+     * @throws IndexOutOfBoundsException if the index position is out the queue
+     *                                   array.
+     * @return The item in the position
+     */
+    public Item get(int pos) {
+        if (pos > size)
+            throw new IndexOutOfBoundsException();
+        return items[pos];
+    }
+
+    /**
      * Checks if the queue is empty.
      * 
      * @return true if the size is zero, false otherwise.
